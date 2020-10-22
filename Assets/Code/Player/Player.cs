@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.3F, player.transform.position.z), transform.rotation) as GameObject;
+            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.7F, player.transform.position.z), transform.rotation) as GameObject;
         }
     }
 }
