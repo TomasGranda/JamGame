@@ -114,3 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  shootInterval: 1
+  enemyShoot: {fileID: 128327504591066427, guid: f63b0626df09dab4486fb496f28c1ac4,
+    type: 3}
