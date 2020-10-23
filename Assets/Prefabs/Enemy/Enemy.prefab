@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3580544482070308474}
   - component: {fileID: 3580544482070308469}
-  - component: {fileID: 2133464053}
   - component: {fileID: 8176008983141370839}
   m_Layer: 0
   m_Name: Enemy
@@ -83,24 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!143 &2133464053
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3580544482070308470}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8176008983141370839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349aa825761d18c4ea6111de70175f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  shootInterval: 1
+  shootInterval: 3
   enemyShoot: {fileID: 128327504591066427, guid: f63b0626df09dab4486fb496f28c1ac4,
     type: 3}
