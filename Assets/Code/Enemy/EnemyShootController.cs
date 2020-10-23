@@ -18,12 +18,14 @@ public class EnemyShootController : MonoBehaviour
         switch (other.tag)
         {
             case "VerticalBorder":
+            case "HorizontalBorder":
                 Destroy(gameObject);
                 break;
             case "Player":
                 PlayerController playerController = other.GetComponent<PlayerController>();
                 playerController.currentLife -= damage;
                 Destroy(gameObject);
+                other.GetComponents<AudioSource>()[2].Play();
                 break;
         }
     }

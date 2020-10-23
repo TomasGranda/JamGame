@@ -16,10 +16,13 @@ public class EnemyGenerator : MonoBehaviour
 
     private bool shouldSpawnEnemies = true;
 
+    public int initialDirection = 1;
+
     void Start()
     {
         InitEnemiesSpawn();
         currentEnemySwarm = GameObject.Instantiate(enemySwarm, transform.position, transform.rotation);
+        currentEnemySwarm.GetComponent<EnemySwarmController>().initialDirection = initialDirection;
     }
 
     void Update()

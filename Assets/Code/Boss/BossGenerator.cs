@@ -18,11 +18,6 @@ public class BossGenerator : MonoBehaviour
         InitBossSpawn();
     }
 
-    void Update()
-    {
-
-    }
-
     void InitBossSpawn()
     {
         IEnumerator myWaitCoroutine()
@@ -30,6 +25,9 @@ public class BossGenerator : MonoBehaviour
             yield return new WaitForSeconds(spawnOffSet);
 
             SpawnBoss();
+
+
+            yield return new WaitForSeconds(5);
         }
         StartCoroutine(myWaitCoroutine());
     }

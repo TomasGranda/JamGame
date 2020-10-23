@@ -11,9 +11,12 @@ public class EnemySwarmController : MonoBehaviour
 
     private Vector2 movementDirection;
 
+    public int initialDirection = 1;
+
+
     void Start()
     {
-        movementDirection = Vector2.right;
+        movementDirection = Vector2.right * initialDirection;
 
     }
 

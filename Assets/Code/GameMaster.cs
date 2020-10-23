@@ -33,6 +33,7 @@ public class GameMaster : MonoBehaviour
         {
             GameSceneUpdate();
         }
+
     }
 
     public void GoToGameScene()
@@ -65,18 +66,26 @@ public class GameMaster : MonoBehaviour
         multiplierUI.text = "x" + Math.Round(currentMultiplier, 1).ToString();
         scoreUI.text = Math.Floor(currentScore).ToString();
 
-
-
         if (player.currentLife <= 0)
         {
-            SceneManager.LoadScene("GameOverScene");
+            player.TriggerDeadAnimation();
+            if (player.isDestroyed)
+            {
+                SceneManager.LoadScene("GameOverScene");
+            }
         }
+
+        currentMultiplier = 2 - player.currentLife / 100;
     }
 
     public void OnEnemyDestroyed(GameObject enemy)
     {
         currentScore += enemy.GetComponent<EnemyController>().value * currentMultiplier;
-        currentMultiplier += 0.1f;
+    }
+
+    public void OnBossDestroyed(GameObject enemy)
+    {
+        currentScore += enemy.GetComponent<BossController>().value * currentMultiplier;
     }
 
 }

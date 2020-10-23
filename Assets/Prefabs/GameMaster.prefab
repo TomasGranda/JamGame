@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db2c45091c82b643b005a49cb74f80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPoints: 0
-  currentMultiplicator: 1
+  currentScore: 0
+  currentMultiplier: 1
+  mainTheme: {fileID: 8300000, guid: 62b24b61ce930e0459a12532abd3264e, type: 3}

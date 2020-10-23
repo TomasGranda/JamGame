@@ -10,6 +10,11 @@ public class EnemyController : MonoBehaviour
 
     public GameObject enemyShoot;
 
+    public int contactDamage = 20;
+
+    [HideInInspector]
+    public bool destroy = false;
+
     private float time;
 
     void Start()
@@ -17,9 +22,15 @@ public class EnemyController : MonoBehaviour
         InitShoot();
     }
 
+    private void Update()
+    {
+        CheckIfDestroy();
+    }
+
     void Shoot()
     {
         GameObject.Instantiate(enemyShoot, transform.position, transform.rotation);
+        GetComponents<AudioSource>()[0].Play();
     }
 
     void InitShoot()
@@ -33,5 +44,22 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(myWaitCoroutine());
         }
         StartCoroutine(myWaitCoroutine());
+    }
+
+    public void CheckIfDestroy()
+    {
+        if (destroy)
+        {
+            GameMaster.Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            GetComponent<Animator>().SetTrigger("Dead");
+            other.gameObject.GetComponent<PlayerController>().currentLife -= contactDamage;
+        }
     }
 }
