@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,11 +9,15 @@ public class GameMaster : MonoBehaviour
 {
     private PlayerController player;
 
-    public float currentPoints = 0;
+    public float currentScore = 0;
 
-    public float currentMultiplicator = 1;
+    public float currentMultiplier = 1;
 
-    private Slider lifeBar;
+    private Slider lifeBarUi;
+
+    private Text multiplierUI;
+
+    private Text scoreUI;
 
     private void Start()
     {
@@ -48,13 +53,20 @@ public class GameMaster : MonoBehaviour
     public void SetupGameScene()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Slider>();
-        lifeBar.maxValue = player.maxLife;
+        lifeBarUi = GameObject.Find("LifeBar").GetComponent<Slider>();
+        multiplierUI = GameObject.Find("Multiplier").GetComponent<Text>();
+        scoreUI = GameObject.Find("Score").GetComponent<Text>();
+        lifeBarUi.maxValue = player.maxLife;
     }
 
     public void GameSceneUpdate()
     {
-        lifeBar.value = player.currentLife;
+        lifeBarUi.value = player.currentLife;
+        multiplierUI.text = "x" + Math.Round(currentMultiplier, 1).ToString();
+        scoreUI.text = Math.Floor(currentScore).ToString();
+
+
+
         if (player.currentLife <= 0)
         {
             SceneManager.LoadScene("GameOverScene");
@@ -63,8 +75,8 @@ public class GameMaster : MonoBehaviour
 
     public void OnEnemyDestroyed(GameObject enemy)
     {
-        currentPoints += enemy.GetComponent<EnemyController>().value * currentMultiplicator;
-        currentMultiplicator += 0.1f;
+        currentScore += enemy.GetComponent<EnemyController>().value * currentMultiplier;
+        currentMultiplier += 0.1f;
     }
 
 }
