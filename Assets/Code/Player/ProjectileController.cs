@@ -25,7 +25,7 @@ public class ProjectileController : MonoBehaviour
             Destroy(projectile);
         }
 
-        if(collision.gameObject.tag == "Finish")
+        if(collision.gameObject.tag == "VerticalBorder")
         {
             Destroy(projectile);
         }

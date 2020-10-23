@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManajer : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public int lifeBar;
-    public static bool gameActive = true;
-
-    // Start is called before the first frame update
-    void Start()
+    public void GoToGameScene()
     {
-        lifeBar = 4;
+        SceneManager.LoadScene("GameScene");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToMainMenuScene()
     {
-        
+        SceneManager.LoadScene("MainMenuScene");
     }
+
+    public void QuitGame()
+    {
+        QuitGame();
+    }
+
 }
