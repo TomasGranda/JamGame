@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
 
-    private GameObject projectileClone;
+    public int maxProjectilesInScreen = 2;
 
     void Update()
     {
@@ -21,22 +22,22 @@ public class PlayerController : MonoBehaviour
     // Player movement uses arrow keys to detect in which direction to move
     void playerMovement()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
             transform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetAxisRaw("Horizontal") < 0)
         {
             transform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetAxisRaw("Vertical") > 0)
         {
             transform.Translate(new Vector3(0, -movementSpeed * Time.deltaTime, 0));
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetAxisRaw("Vertical") < 0)
         {
             transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
         }
@@ -44,9 +45,9 @@ public class PlayerController : MonoBehaviour
 
     void playerShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameObject.FindGameObjectsWithTag("PlayerProjectile").Length < maxProjectilesInScreen)
         {
-            projectileClone = GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            GameObject.Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
         }
     }
 }

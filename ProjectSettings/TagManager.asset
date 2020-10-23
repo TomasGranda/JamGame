@@ -9,6 +9,7 @@ TagManager:
   - HorizontalBorder
   - Boss
   - LifeBar
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
