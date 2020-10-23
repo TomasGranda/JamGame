@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float movementSpeed;
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         playerMovement();
         playerShoot();
-
+        playerResize();
     }
 
     // Player movement uses arrow keys to detect in which direction to move
@@ -47,12 +47,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(new Vector3(0, getMovementSpeed() * Time.deltaTime, 0));
+            transform.Translate(new Vector3(0, -getMovementSpeed() * Time.deltaTime, 0));
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(new Vector3(0, -getMovementSpeed() * Time.deltaTime, 0));
+            transform.Translate(new Vector3(0, getMovementSpeed() * Time.deltaTime, 0));
         }
     }
 
@@ -60,7 +60,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.7F, player.transform.position.z), transform.rotation) as GameObject;
+            projectileClone = Instantiate(projectile, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z), transform.rotation) as GameObject;
         }
+    }
+
+    void playerResize() {
+       
     }
 }
