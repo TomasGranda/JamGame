@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public int value = 50;
+
     public float shootInterval = 1;
 
     public GameObject enemyShoot;
@@ -13,10 +15,6 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         InitShoot();
-    }
-
-    void Update()
-    {
     }
 
     void Shoot()

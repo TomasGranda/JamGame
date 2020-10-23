@@ -17,6 +17,8 @@ public class ProjectileController : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(transform.gameObject);
+
+            GameObject.Find("GameMaster").GetComponent<GameMaster>().OnEnemyDestroyed(other.gameObject);
         }
 
         if (other.tag == "VerticalBorder")

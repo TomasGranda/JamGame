@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db2c45091c82b643b005a49cb74f80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPoints: 0
+  currentMultiplicator: 1

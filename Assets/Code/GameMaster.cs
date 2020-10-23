@@ -8,6 +8,10 @@ public class GameMaster : MonoBehaviour
 {
     private PlayerController player;
 
+    public float currentPoints = 0;
+
+    public float currentMultiplicator = 1;
+
     private Slider lifeBar;
 
     private void Start()
@@ -16,8 +20,6 @@ public class GameMaster : MonoBehaviour
         {
             SetupGameScene();
         }
-
-
     }
 
     private void Update()
@@ -57,6 +59,12 @@ public class GameMaster : MonoBehaviour
         {
             SceneManager.LoadScene("GameOverScene");
         }
+    }
+
+    public void OnEnemyDestroyed(GameObject enemy)
+    {
+        currentPoints += enemy.GetComponent<EnemyController>().value * currentMultiplicator;
+        currentMultiplicator += 0.1f;
     }
 
 }
