@@ -12,14 +12,20 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Slider>();
-        lifeBar.maxValue = player.maxLife;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            SetupGameScene();
+        }
+
+
     }
 
     private void Update()
     {
-        lifeBar.value = player.currentLife;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            GameSceneUpdate();
+        }
     }
 
     public void GoToGameScene()
@@ -35,6 +41,22 @@ public class GameMaster : MonoBehaviour
     public void QuitGame()
     {
         QuitGame();
+    }
+
+    public void SetupGameScene()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Slider>();
+        lifeBar.maxValue = player.maxLife;
+    }
+
+    public void GameSceneUpdate()
+    {
+        lifeBar.value = player.currentLife;
+        if (player.currentLife <= 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
     }
 
 }
