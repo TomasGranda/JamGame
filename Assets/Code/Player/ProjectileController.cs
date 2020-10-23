@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    public GameObject projectile;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed = 3;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0, -5 * Time.deltaTime, 0));
+        transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
-            Destroy(projectile);
+            Destroy(other.gameObject);
+            Destroy(transform.gameObject);
         }
 
-        if(collision.gameObject.tag == "VerticalBorder")
+        if (other.tag == "VerticalBorder")
         {
-            Destroy(projectile);
+            Destroy(transform.gameObject);
         }
     }
 }

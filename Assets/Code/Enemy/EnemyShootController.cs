@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class EnemyShootController : MonoBehaviour
 {
-    public float speed = 0.5f;
+    public float speed = 3;
+
+    public float damage = 10;
 
     void Update()
     {
         transform.Translate(Vector2.down * Time.deltaTime * speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "VerticalBorder")
+        switch (other.tag)
         {
-            GameObject.Destroy(gameObject);
+            case "VerticalBorder":
+                Destroy(gameObject);
+                break;
+            case "Player":
+                PlayerController playerController = other.GetComponent<PlayerController>();
+                playerController.currentLife -= damage;
+                Destroy(gameObject);
+                break;
         }
     }
 }

@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 377632636}
   - component: {fileID: 377632635}
   m_Layer: 5
-  m_Name: PlayButton (1)
+  m_Name: PlayAgainButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2936490396576304991, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
+      - m_Target: {fileID: 7377972645140401994, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
           type: 3}
         m_MethodName: GoToGameScene
         m_Mode: 1
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2936490396576304991, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
+      - m_Target: {fileID: 7377972645140401994, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
           type: 3}
         m_MethodName: QuitGame
         m_Mode: 1
@@ -775,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 2936490396576304990, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
         type: 3}
       propertyPath: m_Name
-      value: GameManager
+      value: GameMaster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d2be5c590a48dc4a955c6638c2d6f97, type: 3}
@@ -948,7 +948,7 @@ GameObject:
   - component: {fileID: 1413829709}
   - component: {fileID: 1413829708}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2936490396576304991, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
+      - m_Target: {fileID: 7377972645140401994, guid: 4d2be5c590a48dc4a955c6638c2d6f97,
           type: 3}
         m_MethodName: GoToMainMenuScene
         m_Mode: 1
